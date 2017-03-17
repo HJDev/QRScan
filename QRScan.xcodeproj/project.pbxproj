@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14A1BE5733B383B5564A2FBC /* libPods-QRScan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 116A10E53A308091F07CA4FA /* libPods-QRScan.a */; };
+		684C5BD2377B8428DFCB38AC /* libPods-QRScanUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9F7DA2BF2546C5F49F5FE /* libPods-QRScanUITests.a */; };
+		7166C656AA5C470D5A89C870 /* libPods-QRScanTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80B9FDB9306F27A94C8076F /* libPods-QRScanTests.a */; };
 		792EF7201E7A7B0B0088F174 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF71F1E7A7B0B0088F174 /* main.m */; };
 		792EF7231E7A7B0B0088F174 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF7221E7A7B0B0088F174 /* AppDelegate.m */; };
 		792EF7261E7A7B0B0088F174 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF7251E7A7B0B0088F174 /* ViewController.m */; };
@@ -15,6 +18,8 @@
 		792EF72E1E7A7B0B0088F174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 792EF72C1E7A7B0B0088F174 /* LaunchScreen.storyboard */; };
 		792EF7391E7A7B0C0088F174 /* QRScanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF7381E7A7B0C0088F174 /* QRScanTests.m */; };
 		792EF7441E7A7B0C0088F174 /* QRScanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF7431E7A7B0C0088F174 /* QRScanUITests.m */; };
+		792EF7531E7A810A0088F174 /* HJQRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF7521E7A810A0088F174 /* HJQRScanViewController.m */; };
+		79B499AC1E7A975F00FB0F18 /* HJScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79B499AB1E7A975F00FB0F18 /* HJScan.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		116A10E53A308091F07CA4FA /* libPods-QRScan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRScan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA9F7DA2BF2546C5F49F5FE /* libPods-QRScanUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRScanUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40AD9155C46ED1B4C943A721 /* Pods-QRScanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScanTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRScanTests/Pods-QRScanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		53467FAE9B3A6CE4A0DB8E01 /* Pods-QRScanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScanUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRScanUITests/Pods-QRScanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		792EF71B1E7A7B0B0088F174 /* QRScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		792EF71F1E7A7B0B0088F174 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		792EF7211E7A7B0B0088F174 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +60,14 @@
 		792EF73F1E7A7B0C0088F174 /* QRScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		792EF7431E7A7B0C0088F174 /* QRScanUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRScanUITests.m; sourceTree = "<group>"; };
 		792EF7451E7A7B0C0088F174 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		792EF7511E7A810A0088F174 /* HJQRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJQRScanViewController.h; sourceTree = "<group>"; };
+		792EF7521E7A810A0088F174 /* HJQRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJQRScanViewController.m; sourceTree = "<group>"; };
+		79B499AB1E7A975F00FB0F18 /* HJScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HJScan.bundle; sourceTree = "<group>"; };
+		7F7408BBE1573F3CF31697CA /* Pods-QRScanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScanUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRScanUITests/Pods-QRScanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		867327B360AE71C48756930D /* Pods-QRScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRScan/Pods-QRScan.debug.xcconfig"; sourceTree = "<group>"; };
+		8C13AEEAA0D50FBBEFB126E3 /* Pods-QRScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRScanTests/Pods-QRScanTests.release.xcconfig"; sourceTree = "<group>"; };
+		97F33E40AD3812C694BD8190 /* Pods-QRScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRScan/Pods-QRScan.release.xcconfig"; sourceTree = "<group>"; };
+		B80B9FDB9306F27A94C8076F /* libPods-QRScanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRScanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14A1BE5733B383B5564A2FBC /* libPods-QRScan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7166C656AA5C470D5A89C870 /* libPods-QRScanTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				684C5BD2377B8428DFCB38AC /* libPods-QRScanUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +105,8 @@
 				792EF7371E7A7B0C0088F174 /* QRScanTests */,
 				792EF7421E7A7B0C0088F174 /* QRScanUITests */,
 				792EF71C1E7A7B0B0088F174 /* Products */,
+				8A395DDB326996EF5FDD8E5B /* Pods */,
+				BB1BFB6F73F5116699EC6633 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,11 +127,14 @@
 				792EF7221E7A7B0B0088F174 /* AppDelegate.m */,
 				792EF7241E7A7B0B0088F174 /* ViewController.h */,
 				792EF7251E7A7B0B0088F174 /* ViewController.m */,
+				792EF7511E7A810A0088F174 /* HJQRScanViewController.h */,
+				792EF7521E7A810A0088F174 /* HJQRScanViewController.m */,
 				792EF7271E7A7B0B0088F174 /* Main.storyboard */,
 				792EF72A1E7A7B0B0088F174 /* Assets.xcassets */,
 				792EF72C1E7A7B0B0088F174 /* LaunchScreen.storyboard */,
 				792EF72F1E7A7B0B0088F174 /* Info.plist */,
 				792EF71E1E7A7B0B0088F174 /* Supporting Files */,
+				79B499AB1E7A975F00FB0F18 /* HJScan.bundle */,
 			);
 			path = QRScan;
 			sourceTree = "<group>";
@@ -140,6 +165,29 @@
 			path = QRScanUITests;
 			sourceTree = "<group>";
 		};
+		8A395DDB326996EF5FDD8E5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				867327B360AE71C48756930D /* Pods-QRScan.debug.xcconfig */,
+				97F33E40AD3812C694BD8190 /* Pods-QRScan.release.xcconfig */,
+				40AD9155C46ED1B4C943A721 /* Pods-QRScanTests.debug.xcconfig */,
+				8C13AEEAA0D50FBBEFB126E3 /* Pods-QRScanTests.release.xcconfig */,
+				53467FAE9B3A6CE4A0DB8E01 /* Pods-QRScanUITests.debug.xcconfig */,
+				7F7408BBE1573F3CF31697CA /* Pods-QRScanUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB1BFB6F73F5116699EC6633 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				116A10E53A308091F07CA4FA /* libPods-QRScan.a */,
+				B80B9FDB9306F27A94C8076F /* libPods-QRScanTests.a */,
+				2CA9F7DA2BF2546C5F49F5FE /* libPods-QRScanUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 792EF7481E7A7B0C0088F174 /* Build configuration list for PBXNativeTarget "QRScan" */;
 			buildPhases = (
+				1AA21DFE9B595E547A001155 /* [CP] Check Pods Manifest.lock */,
 				792EF7171E7A7B0B0088F174 /* Sources */,
 				792EF7181E7A7B0B0088F174 /* Frameworks */,
 				792EF7191E7A7B0B0088F174 /* Resources */,
+				A097E098D100632D78D87BE1 /* [CP] Embed Pods Frameworks */,
+				7AC572D3990003FF166EF4D3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +215,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 792EF74B1E7A7B0C0088F174 /* Build configuration list for PBXNativeTarget "QRScanTests" */;
 			buildPhases = (
+				BC10B6835D0D205492809200 /* [CP] Check Pods Manifest.lock */,
 				792EF7301E7A7B0C0088F174 /* Sources */,
 				792EF7311E7A7B0C0088F174 /* Frameworks */,
 				792EF7321E7A7B0C0088F174 /* Resources */,
+				F02100D43C42843316D11C68 /* [CP] Embed Pods Frameworks */,
+				F2EAA8CB5A79CD5CDA9F4E37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 792EF74E1E7A7B0C0088F174 /* Build configuration list for PBXNativeTarget "QRScanUITests" */;
 			buildPhases = (
+				112C83C6ABDAE270537D2241 /* [CP] Check Pods Manifest.lock */,
 				792EF73B1E7A7B0C0088F174 /* Sources */,
 				792EF73C1E7A7B0C0088F174 /* Frameworks */,
 				792EF73D1E7A7B0C0088F174 /* Resources */,
+				6EBC40B773A25F3DDEE31196 /* [CP] Embed Pods Frameworks */,
+				4A1D9E73ECD67A050F84359A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,6 +259,7 @@
 		792EF7131E7A7B0B0088F174 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HJ;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = HeJun;
 				TargetAttributes = {
@@ -249,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79B499AC1E7A975F00FB0F18 /* HJScan.bundle in Resources */,
 				792EF72E1E7A7B0B0088F174 /* LaunchScreen.storyboard in Resources */,
 				792EF72B1E7A7B0B0088F174 /* Assets.xcassets in Resources */,
 				792EF7291E7A7B0B0088F174 /* Main.storyboard in Resources */,
@@ -271,11 +330,150 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		112C83C6ABDAE270537D2241 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1AA21DFE9B595E547A001155 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A1D9E73ECD67A050F84359A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScanUITests/Pods-QRScanUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EBC40B773A25F3DDEE31196 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScanUITests/Pods-QRScanUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AC572D3990003FF166EF4D3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScan/Pods-QRScan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A097E098D100632D78D87BE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScan/Pods-QRScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC10B6835D0D205492809200 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F02100D43C42843316D11C68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScanTests/Pods-QRScanTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2EAA8CB5A79CD5CDA9F4E37 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRScanTests/Pods-QRScanTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		792EF7171E7A7B0B0088F174 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				792EF7531E7A810A0088F174 /* HJQRScanViewController.m in Sources */,
 				792EF7261E7A7B0B0088F174 /* ViewController.m in Sources */,
 				792EF7231E7A7B0B0088F174 /* AppDelegate.m in Sources */,
 				792EF7201E7A7B0B0088F174 /* main.m in Sources */,
@@ -423,6 +621,7 @@
 		};
 		792EF7491E7A7B0C0088F174 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867327B360AE71C48756930D /* Pods-QRScan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
@@ -435,6 +634,7 @@
 		};
 		792EF74A1E7A7B0C0088F174 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97F33E40AD3812C694BD8190 /* Pods-QRScan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
@@ -447,6 +647,7 @@
 		};
 		792EF74C1E7A7B0C0088F174 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40AD9155C46ED1B4C943A721 /* Pods-QRScanTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
@@ -460,6 +661,7 @@
 		};
 		792EF74D1E7A7B0C0088F174 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C13AEEAA0D50FBBEFB126E3 /* Pods-QRScanTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
@@ -473,6 +675,7 @@
 		};
 		792EF74F1E7A7B0C0088F174 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53467FAE9B3A6CE4A0DB8E01 /* Pods-QRScanUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
 				INFOPLIST_FILE = QRScanUITests/Info.plist;
@@ -485,6 +688,7 @@
 		};
 		792EF7501E7A7B0C0088F174 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F7408BBE1573F3CF31697CA /* Pods-QRScanUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = UVTAS8R4A5;
 				INFOPLIST_FILE = QRScanUITests/Info.plist;
@@ -514,6 +718,7 @@
 				792EF74A1E7A7B0C0088F174 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		792EF74B1E7A7B0C0088F174 /* Build configuration list for PBXNativeTarget "QRScanTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +727,7 @@
 				792EF74D1E7A7B0C0088F174 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		792EF74E1E7A7B0C0088F174 /* Build configuration list for PBXNativeTarget "QRScanUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +736,7 @@
 				792EF7501E7A7B0C0088F174 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
