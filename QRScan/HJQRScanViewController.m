@@ -7,6 +7,8 @@
 //
 
 #import "HJQRScanViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import "HJOtherViewController.h"
 #import <Masonry.h>
 
 #ifndef RGBA
@@ -21,13 +23,19 @@
 #define HJStrongSelf __strong typeof(self) strongSelf = weakSelf
 /** 扫描区域宽度、高度 */
 #define ScanViewWidth 200
+/** 扫描区域距顶部高度 */
+#define ScanViewMarginTop 200
+#define Width [UIScreen mainScreen].bounds.size.width
+#define Height [UIScreen mainScreen].bounds.size.height
 /** 扫描边角宽度 */
 #define ScanAngelWidth 0
 
 /** 定义图片地址 */
 #define HJScanSrcFile(file) [@"HJScan.bundle" stringByAppendingPathComponent:file]
 
-@interface HJQRScanViewController ()
+@interface HJQRScanViewController ()<AVCaptureMetadataOutputObjectsDelegate> {
+	dispatch_queue_t queue;
+}
 
 /** 顶部填充区 */
 @property (nonatomic, strong) UIView *topBlank;
@@ -49,6 +57,8 @@
 /** 扫描线条 */
 @property (nonatomic, strong) UIImageView *scanLine;
 
+@property (nonatomic, strong) AVCaptureSession *captureSession;
+
 @end
 
 @implementation HJQRScanViewController
@@ -57,7 +67,31 @@
     [super viewDidLoad];
 	
 	self.view.backgroundColor = [UIColor whiteColor];
+	//初始化控件
 	[self setupViews];
+	//初始化视频捕捉
+	[self setupCapture];
+}
+
+- (instancetype)init {
+	if (self = [super init]) {
+		queue = dispatch_queue_create("org.hejun.QRScan", NULL);
+	}
+	return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[self.captureSession startRunning];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	if ([self.captureSession isRunning]) {
+		[self.captureSession stopRunning];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +101,9 @@
 
 - (void)dealloc {
 	NSLog(@"%s", __func__);
+	if ([self.captureSession isRunning]) {
+		[self.captureSession stopRunning];
+	}
 }
 
 - (void)updateViewConstraints {
@@ -79,6 +116,7 @@
  * 初始化控件
  */
 - (void)setupViews {
+	
 	[self.view addSubview:self.topBlank];
 	[self.view addSubview:self.bottomBlank];
 	[self.view addSubview:self.leftBlank];
@@ -106,7 +144,7 @@
 	//blank view constraints
 	[self.topBlank mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.left.right.mas_equalTo(weakSelf.view);
-		make.height.mas_equalTo(200);
+		make.height.mas_equalTo(ScanViewMarginTop);
 	}];
 	
 	[self.bottomBlank mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -166,6 +204,15 @@
  */
 - (void)scanLineAnimation {
 	HJWeakSelf;
+	
+	[self.scanLine.layer removeAllAnimations];
+	[self.scanLine mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.top.mas_equalTo(weakSelf.topBlank.mas_bottom);
+	}];
+	[self.scanLine setNeedsUpdateConstraints];
+	[self.scanLine updateConstraintsIfNeeded];
+	[self.view layoutIfNeeded];
+	
 	[UIView animateWithDuration:2.5 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
 		[weakSelf.scanLine mas_updateConstraints:^(MASConstraintMaker *make) {
 			make.top.mas_equalTo(weakSelf.topBlank.mas_bottom).offset(ScanViewWidth);
@@ -182,7 +229,163 @@
 		[weakSelf.view layoutIfNeeded];
 		
 		[weakSelf scanLineAnimation];
+		
 	}];
+	
+}
+
+/**
+ * 显示提示
+ */
+- (void)showAlertTitle:(NSString *)title message:(NSString *)message {
+	if (title == nil) {
+		title = @"系统提示";
+	}
+	
+	if (message == nil) {
+		message = @"";
+	}
+	
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+	[alert addAction:confirmAction];
+	[self presentViewController:alert animated:YES completion:nil];
+}
+
+/**
+ * 初始化Capture
+ */
+- (void)setupCapture {
+	AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	[captureDevice lockForConfiguration:nil];
+	if ([captureDevice hasTorch]) {
+		[captureDevice setTorchMode:AVCaptureTorchModeAuto];
+	}
+	[captureDevice unlockForConfiguration];
+	
+	NSError *error = nil;
+	AVCaptureDeviceInput *captureInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
+	if (error) {
+		NSLog(@"%@", error);
+		return;
+	}
+	
+	if (!captureInput) {
+		if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0) {
+			[self showAlertTitle:@"系统提示" message:@"您已关闭相机使用权限，请至手机“设置->隐私->相机”中打开"];
+		} else {
+			[self showAlertTitle:@"系统提示" message:@"未能找到相机设备"];
+		}
+		return;
+	}
+	
+	AVCaptureMetadataOutput *captureOutput = [[AVCaptureMetadataOutput alloc] init];
+	[captureOutput setMetadataObjectsDelegate:self queue:queue];
+	
+	captureOutput.rectOfInterest = [UIScreen mainScreen].bounds;
+	
+	AVCaptureSession *captureSession = [[AVCaptureSession alloc] init];
+	self.captureSession = captureSession;
+	[captureSession addInput:captureInput];
+	[captureSession addOutput:captureOutput];
+	
+	captureOutput.metadataObjectTypes = captureOutput.availableMetadataObjectTypes;//需要在添加到captureSession后才能获取到值
+	
+	if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+		if ([captureSession canSetSessionPreset:AVCaptureSessionPreset3840x2160]) {
+			[captureSession setSessionPreset:AVCaptureSessionPreset3840x2160];
+		}
+	} else {
+		if ([captureSession canSetSessionPreset:AVCaptureSessionPreset1920x1080]) {
+			[captureSession setSessionPreset:AVCaptureSessionPreset1920x1080];
+		} else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]) {
+			[captureSession setSessionPreset:AVCaptureSessionPreset1280x720];
+		} else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
+			[captureSession setSessionPreset:AVCaptureSessionPreset640x480];
+		} else if ([captureSession canSetSessionPreset:AVCaptureSessionPreset352x288]) {
+			[captureSession setSessionPreset:AVCaptureSessionPreset352x288];
+		}
+	}
+	
+	AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+	previewLayer.frame = [UIScreen mainScreen].bounds;
+	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer insertSublayer:previewLayer atIndex:0];
+	
+	CGRect rect = CGRectMake((Width - ScanViewWidth) * 0.5, ScanViewMarginTop, ScanViewWidth, ScanViewWidth);
+	
+	captureOutput.rectOfInterest = [previewLayer metadataOutputRectOfInterestForRect:rect];
+	
+}
+
+#pragma mark - AVCaptureMetadataOutputObjectsDelegate
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+	if (!metadataObjects.count) {
+		return;
+	}
+	for (NSObject *obj in metadataObjects) {
+		if ([obj isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
+			
+			AVMetadataMachineReadableCodeObject *codeObj = (AVMetadataMachineReadableCodeObject *)obj;
+			[self stopScanWithResult:codeObj.stringValue];
+			[self playBeep];
+			
+		}
+	}
+}
+
+
+#pragma mark - scan actions
+/**
+ * 开始扫描
+ */
+- (void)startScan {
+	if (![self.captureSession isRunning]) {
+		[self.captureSession startRunning];
+	}
+}
+
+/**
+ * 停止扫描
+ */
+- (void)stopScanWithResult:(NSString *)result {
+	if ([self.captureSession isRunning]) {
+		[self.captureSession stopRunning];
+		
+		HJWeakSelf;
+		[self showInMainThread:^{
+			HJOtherViewController *otherVc = [HJOtherViewController new];
+			otherVc.scanResult = result;
+			[weakSelf.navigationController pushViewController:otherVc animated:YES];
+		}];
+		
+	}
+}
+
+/**
+ * 在主线程操作视图
+ */
+- (void)showInMainThread:(dispatch_block_t)block {
+	if (![[NSThread currentThread] isMainThread]) {
+		dispatch_async(dispatch_get_main_queue(), block);
+	} else {
+		block();
+	}
+}
+
+/**
+ * 播放哔声
+ */
+- (void)playBeep {
+	SystemSoundID sound = kSystemSoundID_Vibrate;
+	//alarm.caf
+	NSString *path = [NSString stringWithFormat:@"%@%@", @"/System/Library/Audio/UISounds/", @"begin_record.caf"];
+	OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)([NSURL URLWithString:path]), &sound);
+	if (status != kAudioServicesNoError) {
+		sound = 0;
+	}
+	AudioServicesPlaySystemSound(sound);
+	AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
 }
 
 #pragma mark - lazyload
